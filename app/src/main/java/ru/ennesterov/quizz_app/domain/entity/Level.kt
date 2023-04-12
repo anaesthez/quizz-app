@@ -1,6 +1,10 @@
 package ru.ennesterov.quizz_app.domain.entity
 
-enum class Level {
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 
-    TEST, EASY, MIDDLE, HARD
+@Parcelize
+enum class Level : Parcelable {
+
+    TEST, EASY, MEDIUM, HARD
 }

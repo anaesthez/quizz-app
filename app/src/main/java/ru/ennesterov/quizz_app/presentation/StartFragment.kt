@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import ru.ennesterov.quizz_app.R
 import ru.ennesterov.quizz_app.databinding.FragmentStartBinding
 
 class StartFragment : Fragment() {
@@ -26,8 +27,15 @@ class StartFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.okButton.setOnClickListener {
-            
+            launchChooseLevelFragment()
         }
+    }
+
+    private fun launchChooseLevelFragment() {
+        requireActivity().supportFragmentManager.beginTransaction()
+            .replace(R.id.main_container, ChooseLevelFragment.newInstance())
+            .addToBackStack(null)
+            .commit()
     }
 
     override fun onDestroy() {
