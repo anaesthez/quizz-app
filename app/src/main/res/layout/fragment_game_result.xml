@@ -9,6 +9,7 @@
     tools:context=".presentation.GameResultFragment">
 
     <ImageView
+        android:id="@+id/result_emoji_iv"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_gravity="top"
@@ -16,6 +17,7 @@
         android:src="@drawable/happy" />
 
     <TextView
+        android:id="@+id/required_answers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/required_amount_of_right_answers"
@@ -23,13 +25,15 @@
         android:textSize="18sp" />
 
     <TextView
+        android:id="@+id/current_answers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/current_answers"
+        android:text="@string/current_amount_of_answers"
         android:layout_margin="10dp"
         android:textSize="18sp" />
 
     <TextView
+        android:id="@+id/required_percentage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/required_percentage_of_right_answers"
@@ -37,6 +41,7 @@
         android:textSize="18sp" />
 
     <TextView
+        android:id="@+id/current_percentage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/current_percentage_of_right_answers"

@@ -74,7 +74,7 @@
         android:id="@+id/percentage_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Процент правильных ответов (минимум )"
+        android:text="@string/current_answers"
         app:layout_constraintBottom_toTopOf="@id/progress_bar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -93,6 +93,7 @@
 
 
     <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/flow_options"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -100,7 +101,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/progress_bar"
         app:flow_wrapMode="chain"
-        app:flow_verticalGap="6dp"
         app:constraint_referenced_ids="option_1, option_2, option_3, option_4,"/>
 
     <TextView
@@ -108,6 +108,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#EC0F0F"
+        app:layout_constraintDimensionRatio="1:1"
         style="@style/OptionTextStyle"
         android:text="1" />
 
@@ -116,6 +117,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#000AFF"
+        app:layout_constraintDimensionRatio="1:1"
         style="@style/OptionTextStyle"
         android:text="2" />
 
@@ -124,6 +126,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#00B21D"
+        app:layout_constraintDimensionRatio="1:1"
         style="@style/OptionTextStyle"
         android:text="3" />
 
@@ -132,6 +135,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#FF00C7"
+        app:layout_constraintDimensionRatio="1:1"
         style="@style/OptionTextStyle"
         android:text="4" />
 

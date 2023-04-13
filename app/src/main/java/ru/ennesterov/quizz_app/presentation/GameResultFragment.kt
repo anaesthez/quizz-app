@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import ru.ennesterov.quizz_app.R
 import ru.ennesterov.quizz_app.databinding.FragmentGameResultBinding
 import ru.ennesterov.quizz_app.domain.entity.GameResult
 
@@ -33,16 +34,53 @@ class GameResultFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+        setUpClickListeners()
+        setupViews()
+    }
+
+    private fun setUpClickListeners() {
+        val callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 retryGame()
             }
-        })
-
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
         binding.tryAgainButton.setOnClickListener {
             retryGame()
         }
     }
+
+    private fun setupViews() {
+        with(binding) {
+            resultEmojiIv.setImageResource(getImageState(gameResult.winner))
+            requiredPercentage.text = String.format(
+                getString(R.string.required_percentage_of_right_answers),
+                gameResult.gameSettings.minPercentOfRightAnswers
+            )
+            requiredAnswers.text = String.format(
+                getString(R.string.required_amount_of_right_answers),
+                gameResult.gameSettings.minCountOfRightAnswer
+            )
+            currentAnswers.text = String.format(
+                getString(R.string.current_amount_of_answers),
+                gameResult.countOfRightAnswers
+            )
+            currentPercentage.text = String.format(
+                getString(R.string.current_percentage_of_right_answers),
+                getPercentageOfRightAnswers()
+            )
+        }
+    }
+
+    private fun getPercentageOfRightAnswers() = with(gameResult) {
+        if (countOfQuestions == 0)
+            0
+        else
+            (countOfRightAnswers / countOfQuestions.toDouble() * 100).toInt()
+    }
+
+    private fun getImageState(winner: Boolean): Int =
+        if (winner) R.drawable.happy else R.drawable.sad
 
     override fun onDestroy() {
         super.onDestroy()
