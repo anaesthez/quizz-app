@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import ru.ennesterov.quizz_app.R
+import androidx.navigation.fragment.findNavController
 import ru.ennesterov.quizz_app.databinding.FragmentChooseLevelBinding
 import ru.ennesterov.quizz_app.domain.entity.Level
 
@@ -40,21 +40,12 @@ class ChooseLevelFragment : Fragment() {
     }
 
     private fun launchGameFragment(level: Level) {
-        requireActivity().supportFragmentManager.beginTransaction()
-            .replace(R.id.main_container, GameFragment.newInstance(level))
-            .addToBackStack(GameFragment.NAME)
-            .commit()
+        findNavController().navigate(
+            ChooseLevelFragmentDirections.actionChooseLevelFragmentToGameFragment(level)
+        )
     }
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
     }
-
-    companion object {
-
-        fun newInstance(): ChooseLevelFragment {
-            return ChooseLevelFragment()
-        }
-    }
-
 }
