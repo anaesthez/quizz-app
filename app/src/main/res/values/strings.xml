@@ -5,5 +5,6 @@
     <string name="required_amount_of_right_answers">Необходимое количество правильных ответов: %s</string>
     <string name="current_answers">Количество ваших правильных ответов: %s из %s необходимых</string>
     <string name="required_percentage_of_right_answers">Необходимый процент правильных ответов: %s</string>
-    <string name="current_percentage_of_right_answers">Ваш процент правильных ответов: %s (минимум %s)</string>
+    <string name="current_percentage_of_right_answers">Ваш процент правильных ответов: %s</string>
+    <string name="current_amount_of_answers">Количество ваших правильных ответов: %s</string>
 </resources>
